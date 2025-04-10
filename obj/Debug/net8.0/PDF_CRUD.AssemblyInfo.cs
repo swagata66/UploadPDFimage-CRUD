@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PDF_CRUD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7647fcf179edd3b60c315a4011db76162de5491")]
 [assembly: System.Reflection.AssemblyProductAttribute("PDF_CRUD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PDF_CRUD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

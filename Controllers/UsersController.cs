@@ -5,6 +5,7 @@ using PDF_CRUD.Model;
 using PDF_CRUD.Service;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace PDF_CRUD.Controllers
 {
 
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -61,8 +62,6 @@ namespace PDF_CRUD.Controllers
             {
                 return NotFound();
             }
-
-
             user.Name = userDto.Name;
 
             // Handle image update
@@ -111,8 +110,7 @@ namespace PDF_CRUD.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(user);
-
-        }
+ }
 
         // Helper methods
         private async Task<string> SaveFile(IFormFile file, string folder)
@@ -175,29 +173,93 @@ namespace PDF_CRUD.Controllers
             return newFileHash == existingFileHash;
         }
 
-        private async Task<string> GetFileHash(IFormFile file)
+        private async Task<string> GetFileHash(object file)
         {
-            using (var sha256 = SHA256.Create())
+            using var sha256 = SHA256.Create();
             {
-                using (var stream = file.OpenReadStream())
+                Stream stream = null;
+                if (file is IFormFile formFile)
                 {
-                    var hash = await sha256.ComputeHashAsync(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLower();
+                    stream = formFile.OpenReadStream();
                 }
+                else if (file is string filePath)
+                {
+                    stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                }
+                var hash = await sha256.ComputeHashAsync(stream);
+                stream.Dispose();
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+
             }
         }
 
-        private async Task<string> GetFileHash(string filePath)
+        [HttpGet("GetImageStream/{id}")]
+        public async Task<IActionResult> GetImageStream(int id)
         {
-            using (var sha256 = SHA256.Create())
+            try
             {
-                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                var user = await _context.Users.FindAsync(id);
+                if (user == null || string.IsNullOrEmpty(user.ImagePath))
                 {
-                    var hash = await sha256.ComputeHashAsync(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLower();
+                    return NotFound("User or image not found");
                 }
+
+                var imagePath = Path.Combine(_env.WebRootPath, user.ImagePath);
+                if (!System.IO.File.Exists(imagePath))
+                {
+                    return NotFound("Image file not found");
+                }
+
+                // Determine content type from file extension
+                var contentType = GetContentType(imagePath);
+
+                // Return the file stream
+                var fileStream = System.IO.File.OpenRead(imagePath);
+                return File(fileStream, contentType, enableRangeProcessing: true);
+            }
+            catch (Exception ex)
+            {
+              
+                return StatusCode(500, "Internal server error");
             }
         }
+
+        private string GetContentType(string path)
+        {
+            var extension = Path.GetExtension(path).ToLowerInvariant();
+            return extension switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                ".webp" => "image/webp",
+                _ => "application/octet-stream"
+            };
+        }
+
+        //private async Task<string> GetFileHash(IFormFile file)
+        //{
+        //    using (var sha256 = SHA256.Create())
+        //    {
+        //        using (var stream = file.OpenReadStream())
+        //        {
+        //            var hash = await sha256.ComputeHashAsync(stream);
+        //            return BitConverter.ToString(hash).Replace("-", "").ToLower();
+        //        }
+        //    }
+        //}
+
+        //private async Task<string> GetFileHash(string filePath)
+        //{
+        //    using (var sha256 = SHA256.Create())
+        //    {
+        //        using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+        //        {
+        //            var hash = await sha256.ComputeHashAsync(stream);
+        //            return BitConverter.ToString(hash).Replace("-", "").ToLower();
+        //        }
+        //    }
+        //}
 
     }
 }

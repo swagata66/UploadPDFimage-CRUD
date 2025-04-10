@@ -1,20 +1,12 @@
 {
   "Files": [
     {
-      "Id": "C:\\Swagata\\PDF_CRUD\\PDF_CRUD\\wwwroot\\uploads\\images\\image1.jpg",
-      "PackagePath": "staticwebassets\\uploads\\images\\image1.jpg"
+      "Id": "C:\\Swagata\\PDF_CRUD\\PDF_CRUD\\wwwroot\\uploads\\PDF's\\SamplePdf1.pdf",
+      "PackagePath": "staticwebassets\\uploads\\PDF's\\SamplePdf1.pdf"
     },
     {
       "Id": "C:\\Swagata\\PDF_CRUD\\PDF_CRUD\\wwwroot\\uploads\\images\\image2.jpg",
       "PackagePath": "staticwebassets\\uploads\\images\\image2.jpg"
-    },
-    {
-      "Id": "C:\\Swagata\\PDF_CRUD\\PDF_CRUD\\wwwroot\\uploads\\pdfs\\SmaplePdf2.pdf",
-      "PackagePath": "staticwebassets\\uploads\\pdfs\\SmaplePdf2.pdf"
-    },
-    {
-      "Id": "C:\\Swagata\\PDF_CRUD\\PDF_CRUD\\wwwroot\\uploads\\pdfs\\sample.pdf",
-      "PackagePath": "staticwebassets\\uploads\\pdfs\\sample.pdf"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PDF_CRUD.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

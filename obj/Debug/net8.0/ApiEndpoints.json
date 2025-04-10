@@ -2,7 +2,7 @@
   {
     "ContainingType": "PDF_CRUD.Controllers.UsersController",
     "Method": "CreateUser",
-    "RelativePath": "api/Users/CreateUser",
+    "RelativePath": "Users/CreateUser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -38,7 +38,7 @@
   {
     "ContainingType": "PDF_CRUD.Controllers.UsersController",
     "Method": "GetUserForEdit",
-    "RelativePath": "api/Users/edit/{id}",
+    "RelativePath": "Users/edit/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -63,8 +63,24 @@
   },
   {
     "ContainingType": "PDF_CRUD.Controllers.UsersController",
+    "Method": "GetImageStream",
+    "RelativePath": "Users/GetImageStream/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PDF_CRUD.Controllers.UsersController",
     "Method": "GetUser",
-    "RelativePath": "api/Users/GetUser/{id}",
+    "RelativePath": "Users/GetUser/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -90,7 +106,7 @@
   {
     "ContainingType": "PDF_CRUD.Controllers.UsersController",
     "Method": "UpdateUser",
-    "RelativePath": "api/Users/Update/{id}",
+    "RelativePath": "Users/Update/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

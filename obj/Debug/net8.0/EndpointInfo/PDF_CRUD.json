@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Users/CreateUser": {
+    "/Users/CreateUser": {
       "post": {
         "tags": [
           "Users"
@@ -67,7 +67,7 @@
         }
       }
     },
-    "/api/Users/GetUser/{id}": {
+    "/Users/GetUser/{id}": {
       "get": {
         "tags": [
           "Users"
@@ -107,7 +107,7 @@
         }
       }
     },
-    "/api/Users/Update/{id}": {
+    "/Users/Update/{id}": {
       "put": {
         "tags": [
           "Users"
@@ -180,7 +180,7 @@
         }
       }
     },
-    "/api/Users/edit/{id}": {
+    "/Users/edit/{id}": {
       "get": {
         "tags": [
           "Users"
@@ -216,6 +216,29 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/Users/GetImageStream/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }

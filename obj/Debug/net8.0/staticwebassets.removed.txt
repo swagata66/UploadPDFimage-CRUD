@@ -1,1 +1,1 @@
-C:\Swagata\PDF_CRUD\PDF_CRUD\wwwroot\uploads\images\image1.jpg
+C:\Swagata\PDF_CRUD\PDF_CRUD\wwwroot\uploads\pdfs\SamplePdf1.pdf

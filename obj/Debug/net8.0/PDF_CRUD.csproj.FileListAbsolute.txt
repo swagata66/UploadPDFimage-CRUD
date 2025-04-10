@@ -171,3 +171,4 @@ C:\Swagata\PDF_CRUD\PDF_CRUD\obj\Debug\net8.0\refint\PDF_CRUD.dll
 C:\Swagata\PDF_CRUD\PDF_CRUD\obj\Debug\net8.0\PDF_CRUD.pdb
 C:\Swagata\PDF_CRUD\PDF_CRUD\obj\Debug\net8.0\PDF_CRUD.genruntimeconfig.cache
 C:\Swagata\PDF_CRUD\PDF_CRUD\obj\Debug\net8.0\ref\PDF_CRUD.dll
+C:\Swagata\PDF_CRUD\PDF_CRUD\obj\Debug\net8.0\PDF_CRUD.sourcelink.json
